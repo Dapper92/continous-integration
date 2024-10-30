@@ -1,0 +1,17 @@
+name: CI
+on:
+     push:
+        branches:
+             - master
+jobs:
+    Greet-User:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout Repository
+              uses: action/checkout@v2
+            - name: Greet User 
+              run: | 
+                   user="john Doe"
+                   echo "hello $user"
+                  
+                           
