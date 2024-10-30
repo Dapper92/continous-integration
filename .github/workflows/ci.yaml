@@ -22,8 +22,8 @@ jobs:
                 image name: test-image # image name variable
                 version: 1.0.0 # image version variable
                 username: dapper01
-                run: |
-                   docker build -t $username/$image name:$version .
-                   docker push $username/$image_name:$version 
+              run: |
+                docker build -t $username/$image name:$version .
+                docker push $username/$image_name:$version 
                   
                            
