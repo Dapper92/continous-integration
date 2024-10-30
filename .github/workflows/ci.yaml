@@ -19,11 +19,11 @@ jobs:
                 password: ${{ secrets.DOCKERHUB_PASSWORD }}
             - name: "build the image" 
               env:
-                image name: test-image # image name variable
+                image_name: test-image # image name variable
                 version: 1.0.0 # image version variable
                 username: dapper01
               run: |
-                docker build -t $username/$image name:$version .
+                docker build -t $username/$image_name:$version .
                 docker push $username/$image_name:$version 
                   
                            
