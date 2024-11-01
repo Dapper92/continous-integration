@@ -42,7 +42,7 @@ jobs:
 
   Deploy:
     name: Deploy Docker Image
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     needs: Build
     steps:
       - name: Download artifact
