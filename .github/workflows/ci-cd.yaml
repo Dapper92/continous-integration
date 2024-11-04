@@ -5,6 +5,8 @@ on:
       - master
 jobs:
   Build:
+    name: instance-build
+    if: github.ref == 'refs/heads/master'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
@@ -12,6 +14,10 @@ jobs:
       - name: Greet User
         run: |
           echo "Welcome"
+       # this action is to print random generated object numbers
+      - name: "print github object version number"
+        run: |
+           echo "APP VERSION=${RANDOM}" >> $GITHUB_ENV  
       - name: "Build the Image"
         env:
           image_name: test-image # Image name variable
