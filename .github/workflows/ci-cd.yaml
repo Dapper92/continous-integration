@@ -45,6 +45,10 @@ jobs:
           username: dapper01
         run: |
           docker push $username/$image_name:${{ env.APP_VERSION}}
+        # pass the version number to the next job
+      - name: set output version
+        id: set version
+        run: echo ":: set-output name=version::${{ env.APP_VERSION}}"
 
 
   Deploy:
@@ -66,8 +70,12 @@ jobs:
       - name: Pull and Deploy Docker Image
         env:
           image_name: test-image # Image name variable
-          version: $APP_VERSION # Image version variable
           username: dapper01
         run: |
           docker pull $username/$image_name:$version
-          docker run -d -p 808:80 $username/$image_name:$version
+      - name: run docker container
+        env:
+          image name: test-image
+          username: dapper01
+        run: |    
+          docker run -d -p 808:80 $username/$image_name:${{ needs.build.outputs.version}}
