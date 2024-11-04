@@ -44,7 +44,7 @@ jobs:
           version: $APP_VERSION # Image version variable
           username: dapper01
         run: |
-          docker push $username/$image_name:${{ env.APP_VERSION}} .
+          docker push $username/$image_name:${{ env.APP_VERSION}}
 
 
   # Deploy:
