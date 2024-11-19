@@ -79,3 +79,17 @@ jobs:
           username: dapper01
         run: |    
           docker run -d -p 808:80 $username/$image_name:${{ needs.build.outputs.version}}
+     # this action is to send an email notification for the deployment
+      - name: "send an email notification for the latest version of image to be deployed"
+        uses:   - name: Send mail
+  uses: dawidd6/action-send-mail@v3
+  with: 
+    server_address: smtp.gmail.com
+    server_port: 465
+    secure: true
+    username: oladapper@gmail.com
+    password: ${{secrets.EMAIL_PASSWORD}}
+    subject: "docker image deployed"
+    to: obiwan@example.com,yoda@example.com
+    from: Luke Skywalker # <user@example.com>
+    # Optional plain body:
